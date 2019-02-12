@@ -25,9 +25,14 @@ public class EventController {
 		return eventService.createEvent(files, eventBean);
 	}
 	
-	@RequestMapping(value="/get")
+	@RequestMapping(value="/get", method = RequestMethod.GET)
 	public List<EventBean> getEvent() {		
 		return eventService.getEvent();
+	}
+	
+	@RequestMapping(value="/delete", method = RequestMethod.POST)
+	public void deleteEvent(@RequestParam String eventId) {		
+		eventService.deleteEvent(eventId);
 	}
 
 }
