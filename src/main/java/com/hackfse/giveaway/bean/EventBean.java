@@ -9,12 +9,9 @@ import javax.persistence.Table;
 import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Component;
 
-@Component
-@Entity(name = "Event")
-@Table(name="event")
+
 public class EventBean {
-	@Id
-	@GeneratedValue
+	
 	private Long id;
 	private String name;
 	private Date created_at;

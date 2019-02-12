@@ -2,8 +2,19 @@ package com.hackfse.giveaway.dto;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Component
+@Entity(name = "Event")
+@Table(name="event")
 public class Event {
-	
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String name;
 	private Date created_at;
