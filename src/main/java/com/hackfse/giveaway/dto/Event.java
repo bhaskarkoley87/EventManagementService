@@ -16,9 +16,8 @@ public class Event {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String name;
-	private Date created_at;
-	private Date updated_at;
+	private String eventname;
+	private String eventdescription;
 	private Date startDate;
 	private Date endDate;
 	private String address;
@@ -29,7 +28,9 @@ public class Event {
 	private String pic_url_2;
 	private String pic_url_3;
 	private String pic_url_4;
-	
+	private Long status;
+	private Date effStartDate;
+	private Date effEndDate;
 	
 	public Long getId() {
 		return id;
@@ -37,23 +38,11 @@ public class Event {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getEventName() {
+		return eventname;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public Date getCreated_at() {
-		return created_at;
-	}
-	public void setCreated_at(Date created_at) {
-		this.created_at = created_at;
-	}
-	public Date getUpdated_at() {
-		return updated_at;
-	}
-	public void setUpdated_at(Date updated_at) {
-		this.updated_at = updated_at;
+	public void setEventName(String entevname) {
+		this.eventname = entevname;
 	}
 	public Date getStartDate() {
 		return startDate;
@@ -118,14 +107,62 @@ public class Event {
 	}
 	
 	
-	public Event(Long id, String name, Date created_at, Date updated_at, Date startDate, Date endDate, String address,
-			String city, String contactno, String contactName, String pic_url_1, String pic_url_2, String pic_url_3,
-			String pic_url_4) {
-		super();
+	/**
+	 * @return the description
+	 */
+	public String getEventDescription() {
+		return eventdescription;
+	}
+	/**
+	 * @param description the description to set
+	 */
+	public void setEventDescription(String eventdescription) {
+		this.eventdescription = eventdescription;
+	}
+	/**
+	 * @return the status
+	 */
+	public Long getStatus() {
+		return status;
+	}
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(Long status) {
+		this.status = status;
+	}
+	/**
+	 * @return the effStartDate
+	 */
+	public Date getEffStartDate() {
+		return effStartDate;
+	}
+	/**
+	 * @param effStartDate the effStartDate to set
+	 */
+	public void setEffStartDate(Date effStartDate) {
+		this.effStartDate = effStartDate;
+	}
+	/**
+	 * @return the effEndDate
+	 */
+	public Date getEffEndDate() {
+		return effEndDate;
+	}
+	/**
+	 * @param effEndDate the effEndDate to set
+	 */
+	public void setEffEndDate(Date effEndDate) {
+		this.effEndDate = effEndDate;
+	}
+	
+	public Event(Long id, String eventname, String eventdescription, Date startDate, Date endDate, String address, String city,
+			String contactno, String contactName, String pic_url_1, String pic_url_2, String pic_url_3,
+			String pic_url_4, Long status, Date effStartDate, Date effEndDate) {
+		
 		this.id = id;
-		this.name = name;
-		this.created_at = created_at;
-		this.updated_at = updated_at;
+		this.eventname = eventname;
+		this.eventdescription = eventdescription;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.address = address;
@@ -136,9 +173,12 @@ public class Event {
 		this.pic_url_2 = pic_url_2;
 		this.pic_url_3 = pic_url_3;
 		this.pic_url_4 = pic_url_4;
+		this.status = status;
+		this.effStartDate = effStartDate;
+		this.effEndDate = effEndDate;
 	}
+	
 	public Event() {
-		super();
 	}
 	
 	

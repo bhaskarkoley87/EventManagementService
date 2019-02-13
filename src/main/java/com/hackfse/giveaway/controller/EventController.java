@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.hackfse.giveaway.bean.EventBean;
 import com.hackfse.giveaway.services.EventService;
@@ -26,10 +27,10 @@ public class EventController {
 		return eventService.createEvent(eventBean);
 	}
 	
-	/*@RequestMapping(value="/create", method = RequestMethod.POST)
-	public EventBean create(@RequestParam("files") List<MultipartFile> files, @RequestBody EventBean eventBean) {		
-		return eventService.createEvent(files, eventBean);
-	}*/
+	@RequestMapping(value="/uploadimage", method = RequestMethod.POST)
+	public EventBean uploadimage(@RequestParam("file") MultipartFile file) {		
+		return eventService.uploadEventImage(file);
+	}
 	
 	@RequestMapping(value="/get", method = RequestMethod.GET)
 	public List<EventBean> getEvent() {		

@@ -37,4 +37,19 @@ public class FileUploadService {
 		return uploadResponses;
 	}
 	
+	public List<String> uploadFiles(MultipartFile imagesToUpload) {
+		//final Path fileStoragePath = Paths.get(fileStorageLocation).toAbsolutePath().normalize();
+		final Path fileStoragePath = Paths.get("upload-dir");
+		final List<String> uploadResponses = new ArrayList<String>();		
+		String fileName = UUID.randomUUID()+StringUtils.cleanPath(imagesToUpload.getOriginalFilename());
+		Path targetLocation = fileStoragePath.resolve(fileName);
+		try {
+			Files.copy(imagesToUpload.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);				
+			uploadResponses.add(targetLocation.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
+		return uploadResponses;
+	}
+	
 }
