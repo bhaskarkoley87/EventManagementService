@@ -1,6 +1,7 @@
 package com.hackfse.giveaway.services;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -9,7 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.core.io.Resource;
+
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -50,6 +54,21 @@ public class FileUploadService {
 			e.printStackTrace();
 		}		
 		return uploadResponses;
+	}
+	
+	public Resource loadFile(String filename) {
+		try {
+			final Path fileStoragePath = Paths.get("//");
+			Path file = fileStoragePath.resolve(filename);
+			Resource resource = new UrlResource(file.toUri());
+			if (resource.exists() || resource.isReadable()) {
+				return resource;
+			} else {
+				throw new RuntimeException("FAIL!");
+			}
+		} catch (MalformedURLException e) {
+			throw new RuntimeException("FAIL!");
+		}
 	}
 	
 }

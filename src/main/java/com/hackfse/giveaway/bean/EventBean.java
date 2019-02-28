@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 public class EventBean {
 	
 	private Long id;
-	private String eventname;
-	private String eventdescription;
+	private String eveName;
+	private String eveDescription;
 	private Date startDate;
 	private Date endDate;
 	private String address;
@@ -35,12 +35,7 @@ public class EventBean {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getEventName() {
-		return eventname;
-	}
-	public void setEventName(String entevname) {
-		this.eventname = entevname;
-	}
+	
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -105,18 +100,6 @@ public class EventBean {
 	
 	
 	/**
-	 * @return the description
-	 */
-	public String getEventDescription() {
-		return eventdescription;
-	}
-	/**
-	 * @param description the description to set
-	 */
-	public void setEventDescription(String eventdescription) {
-		this.eventdescription = eventdescription;
-	}
-	/**
 	 * @return the status
 	 */
 	public Long getStatus() {
@@ -152,14 +135,25 @@ public class EventBean {
 	public void setEffEndDate(Date effEndDate) {
 		this.effEndDate = effEndDate;
 	}
-	
-	public EventBean(Long id, String eventname, String eventdescription, Date startDate, Date endDate, String address, String city,
-			String contactno, String contactName, String pic_url_1, String pic_url_2, String pic_url_3,
+	public String getEveName() {
+		return eveName;
+	}
+	public void setEveName(String eveName) {
+		this.eveName = eveName;
+	}
+	public String getEveDescription() {
+		return eveDescription;
+	}
+	public void setEveDescription(String eveDescription) {
+		this.eveDescription = eveDescription;
+	}
+	public EventBean(Long id, String eveName, String eveDescription, Date startDate, Date endDate, String address,
+			String city, String contactno, String contactName, String pic_url_1, String pic_url_2, String pic_url_3,
 			String pic_url_4, Long status, Date effStartDate, Date effEndDate) {
 		
 		this.id = id;
-		this.eventname = eventname;
-		this.eventdescription = eventdescription;
+		this.eveName = eveName;
+		this.eveDescription = eveDescription;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.address = address;
@@ -174,9 +168,11 @@ public class EventBean {
 		this.effStartDate = effStartDate;
 		this.effEndDate = effEndDate;
 	}
-	
 	public EventBean() {
+		
 	}
+	
+	
 	
 	
 }

@@ -16,8 +16,8 @@ public class Event {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String eventname;
-	private String eventdescription;
+	private String eveName;
+	private String eveDescription;
 	private Date startDate;
 	private Date endDate;
 	private String address;
@@ -38,11 +38,11 @@ public class Event {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getEventName() {
-		return eventname;
+	public String getEveName() {
+		return eveName;
 	}
-	public void setEventName(String entevname) {
-		this.eventname = entevname;
+	public void setEveName(String eveName) {
+		this.eveName = eveName;
 	}
 	public Date getStartDate() {
 		return startDate;
@@ -110,14 +110,14 @@ public class Event {
 	/**
 	 * @return the description
 	 */
-	public String getEventDescription() {
-		return eventdescription;
+	public String getEveDescription() {
+		return eveDescription;
 	}
 	/**
 	 * @param description the description to set
 	 */
-	public void setEventDescription(String eventdescription) {
-		this.eventdescription = eventdescription;
+	public void setEveDescription(String eveDescription) {
+		this.eveDescription = eveDescription;
 	}
 	/**
 	 * @return the status
@@ -156,13 +156,13 @@ public class Event {
 		this.effEndDate = effEndDate;
 	}
 	
-	public Event(Long id, String eventname, String eventdescription, Date startDate, Date endDate, String address, String city,
+	public Event(Long id, String eveName, String eveDescription, Date startDate, Date endDate, String address, String city,
 			String contactno, String contactName, String pic_url_1, String pic_url_2, String pic_url_3,
 			String pic_url_4, Long status, Date effStartDate, Date effEndDate) {
 		
 		this.id = id;
-		this.eventname = eventname;
-		this.eventdescription = eventdescription;
+		this.eveName = eveName;
+		this.eveDescription = eveDescription;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.address = address;

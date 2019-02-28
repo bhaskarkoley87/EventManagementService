@@ -1,9 +1,13 @@
 package com.hackfse.giveaway.services;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -45,20 +49,22 @@ public class EventService {
 		
 	}
 
-	public List<EventBean> getEvent() {
+	public List<EventBean> getEvent() throws IOException {
 		List<EventBean> lstEventBean = new ArrayList<>();
 		List<Event> lstEvent = eventRepo.findAllByOrderByStartDate();
 		for(Event event : lstEvent) {
 			EventBean objEventBean = new EventBean();
 			objEventBean.setAddress(event.getAddress());
-			objEventBean.setEventName(event.getEventName());
-			objEventBean.setEventDescription(event.getEventDescription());
+			objEventBean.setEveName(event.getEveName());
+			objEventBean.setEveDescription(event.getEveDescription());
 			objEventBean.setCity(event.getCity());
 			objEventBean.setContactName(event.getContactName());
 			objEventBean.setContactno(event.getContactno());
 			objEventBean.setStartDate(event.getStartDate());
 			objEventBean.setEndDate(event.getEndDate());
-			objEventBean.setPic_url_1(event.getPic_url_1());
+			byte[] fileContent = FileUtils.readFileToByteArray(new File(event.getPic_url_1()));
+			String encodedString = Base64.getEncoder().encodeToString(fileContent);
+			objEventBean.setPic_url_1(encodedString);
 			objEventBean.setPic_url_2(event.getPic_url_2());
 			objEventBean.setPic_url_3(event.getPic_url_3());
 			objEventBean.setPic_url_4(event.getPic_url_4());
@@ -76,8 +82,8 @@ public class EventService {
 		objEvent.setId(eventBean.getId());
 		objEvent.setAddress(eventBean.getAddress());
 		objEvent.setCity(eventBean.getCity());
-		objEvent.setEventName(eventBean.getEventName());
-		objEvent.setEventDescription(eventBean.getEventDescription());
+		objEvent.setEveName(eventBean.getEveName());
+		objEvent.setEveDescription(eventBean.getEveDescription());
 		objEvent.setContactName(eventBean.getContactName());
 		objEvent.setContactno(eventBean.getContactno());
 		objEvent.setStartDate(new Date());
@@ -86,6 +92,7 @@ public class EventService {
 		objEvent.setPic_url_2(eventBean.getPic_url_2());
 		objEvent.setPic_url_3(eventBean.getPic_url_3());
 		objEvent.setPic_url_4(eventBean.getPic_url_4());
+		objEvent.setStatus(1L);
 		eventRepo.save(objEvent);
 		return eventBean;
 	}
