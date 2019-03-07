@@ -7,8 +7,8 @@ VOLUME /tmp/EventManagementService
 # This application will be accessible from port 4081 outside the container.
 EXPOSE 4081
 # Copying the jar file to workdir
-COPY ./target/EventManagementService.jar /usr/app/EventManagementService
-# Defined WORKDIR
 WORKDIR /usr/app
+COPY ./target/EventManagementService.jar /usr/app
+# Defined WORKDIR
 # executing the jar file here...
-ENTRYPOINT ["java","-jar","EventManagementService.jar"]  
+ENTRYPOINT ["java","-jar","EventManagementService.jar"]
