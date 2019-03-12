@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.openfeign.FeignClient;
+//import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +34,7 @@ import com.hackfse.giveaway.services.FileUploadService;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value="/event")
-@FeignClient(name = "eventmanagementservice")
+//@FeignClient(name = "eventmanagementservice")
 public class EventController {
 	
 	@Autowired

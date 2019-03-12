@@ -38,7 +38,7 @@ public class EventService {
 				
 				EventBean eventBean = new EventBean();
 				eventBean.setPic_url_1(objEvent.getPic_url_1());
-				eventBean.setId(objEvent.getId());
+				eventBean.setId(objEvent.getId());				
 				return eventBean;
 			}else {
 				return null;
