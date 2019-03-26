@@ -60,8 +60,7 @@ public class EventController {
 	}
 	
 	@RequestMapping(value="/get", method = RequestMethod.GET)
-	public List<EventBean> getEvent() throws Exception {	
-		System.out.println("Service in working .........");
+	public List<EventBean> getEvent() throws Exception {			
 		return eventService.getEvent();
 	}
 	

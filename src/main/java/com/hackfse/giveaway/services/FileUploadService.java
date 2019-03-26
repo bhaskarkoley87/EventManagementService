@@ -43,7 +43,7 @@ public class FileUploadService {
 	
 	public List<String> uploadFiles(MultipartFile imagesToUpload) {
 		//final Path fileStoragePath = Paths.get(fileStorageLocation).toAbsolutePath().normalize();
-		final Path fileStoragePath = Paths.get("upload-dir");
+		final Path fileStoragePath = Paths.get(fileStorageLocation);
 		final List<String> uploadResponses = new ArrayList<String>();		
 		String fileName = UUID.randomUUID()+StringUtils.cleanPath(imagesToUpload.getOriginalFilename());
 		Path targetLocation = fileStoragePath.resolve(fileName);
