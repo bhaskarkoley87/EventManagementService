@@ -62,9 +62,23 @@ public class EventService {
 			objEventBean.setContactno(event.getContactno());
 			objEventBean.setStartDate(event.getStartDate());
 			objEventBean.setEndDate(event.getEndDate());
-			byte[] fileContent = FileUtils.readFileToByteArray(new File(event.getPic_url_1()));
-			String encodedString = Base64.getEncoder().encodeToString(fileContent);
-			objEventBean.setPic_url_1(encodedString);
+			if(event.getPic_url_1() != null) {
+				if(!event.getPic_url_1().toString().trim().equalsIgnoreCase("")) {
+					File imgFile = new File(event.getPic_url_1());
+					if(imgFile.exists()) {
+						byte[] fileContent = FileUtils.readFileToByteArray(new File(event.getPic_url_1()));
+						String encodedString = Base64.getEncoder().encodeToString(fileContent);
+						objEventBean.setPic_url_1(encodedString);
+					}else {
+						objEventBean.setPic_url_1("");
+					}
+				}else {
+					objEventBean.setPic_url_1("");
+				}
+			}else {
+				objEventBean.setPic_url_1("");
+			}
+			
 			objEventBean.setPic_url_2(event.getPic_url_2());
 			objEventBean.setPic_url_3(event.getPic_url_3());
 			objEventBean.setPic_url_4(event.getPic_url_4());
